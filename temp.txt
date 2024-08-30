@@ -1,0 +1,14 @@
+import random
+from shivu import user_collection, collection 
+
+
+cattie = 6593104095
+
+
+all_characters = list(await collection.find({}).to_list(length=None))
+random_characters = random.sample(all_characters, 40)
+
+
+
+for character in random_characters:
+    await user_collection.update_one({'id': cattie}, {'$push': {'characters': character}})
